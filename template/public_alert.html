@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</head>
+<style type="text/css">
+     .dividerHeading,
+.widget_title {
+    text-align: center;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+     .dividerHeading h2,
+    .widget_title h2 {
+        font-size: 28px;
+        position: relative;
+        line-height: 0;
+        border-bottom: 1px solid #E74C3C;
+    }
+
+        .dividerHeading h2 span {
+            background: white;
+            position: relative;
+            line-height: 10px;
+            top: 4px;
+            display: inline-block;
+        }
+
+            .dividerHeading h2 span:before,
+            .dividerHeading h2 span:after,
+            .widget_title h2 span:after,
+            .widget_title h2 span:before {
+                color: #E74C3C;
+                font-size: 10px;
+                content: "\f10c";
+                font-family: fontawesome;
+                display: inline-block;
+            }
+
+            .dividerHeading h2 span:before,
+            .widget_title h2 span:before {
+                margin-right: 10px;
+            }
+
+            .dividerHeading h2 span:after,
+            .widget_title h2 span:after {
+                margin-left: 10px;
+            }
+    
+        .nav-tabs li.active, .nav-tabs li.active a, .nav-tabs li.active a:hover {
+            border: none;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            min-height: 35px;
+            border: none;
+            border-bottom: 3px solid #E00000;
+            background: rgb(24,53,111);
+        }
+
+        .imgfix {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            vertical-align: middle;
+            border: 0;
+            -ms-interpolation-mode: bicubic;
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $(this).bind("contextmenu", function (e) {
+                e.preventDefault();
+            });
+            $(document).keydown(function (e) {
+                return (e.which || e.keyCode) != 116;
+            });
+
+        });
+    </script>
+<body style="background-color: lightcyan;" >
+
+
+<div class="container col-10" style="margin-top: 40px;">
+ <section id="ContentPlaceHolder1_divfaq" class="fetaure_bottom">
+        <div class="container">
+            <div class="row sub_content">
+                <div class="col-lg-12">
+                    <div class="dividerHeading">
+
+<h2><span>Media Gallery</span></h2>
+                    </div>
+                
+                    <div class="view-content">
+                        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+                            <div class="timelineBlock">
+                                
+                                <div class="timeline-centered">
+                                   
+                                    
+                                    {% for row in data %}
+                                   <article class="timeline-entry mt-4">
+                                        <div class="col-lg-12" style="border: 1px dotted; margin: 0px 0px 11px 0; box-shadow: 1px 1px 1px 1px grey;background:rgba(15, 116, 132, 0.81)">
+                                            
+                                                <div class="timeline-icon bg-success"></div>
+                                                <div class="timeline-label">
+                                                    <h4 style="color:white ;text-align:center">{{row.alert_title}}</h4>
+                                                    <audio controls="" style="width: 100%;">
+                                                        <source src="{{row.audio_file.url}}" type="audio/mpeg">
+                                                    </audio>
+                                                </div>
+
+                                       
+                                        </div>
+                                    </article>
+                                    {%endfor%} 
+
+                                    <!--   <article class="timeline-entry">
+                                        <div class="col-lg-12" style="border: 1px dotted; margin: 0px 0px 11px 0; box-shadow: 1px 1px 1px 1px grey;">
+                                            <div class="timeline-entry-inner col-lg-6" style="border-right: 1px dotted; float: right;">
+                                                <div class="timeline-icon bg-success"></div>
+                                                <div class="timeline-label">
+                                                    <h2>Online Scam or Fraud </h2>
+                                                    <audio controls="" style="width: 100%;">
+                                                        <source src="../UploadMedia/Audio4E.mp3" type="audio/mpeg">
+                                                    </audio>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="timeline-entry-inner col-lg-6">
+                                                <div class="timeline-icon bg-success"></div>
+                                                <div class="timeline-label">
+                                                    <h2>ऑनलाइन घोटाला या धोखाधड़ी </h2>
+                                                    <audio controls="" style="width: 100%;">
+                                                        <source src="../UploadMedia/Audio4.mp3" type="audio/mpeg">
+                                                    </audio>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </article>
+                                -->
+
+                                </div> 
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+        </div> 
+    </section>
+
+    </div>
+</body>
+</html>

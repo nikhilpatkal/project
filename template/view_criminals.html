@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf8mb4">
+        <title></title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+         -->
+        <style>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+body{
+ background-color:#eee;
+ font-family: "Poppins", sans-serif;
+ font-weight: 300;
+}
+
+.height{
+ height: 10vh;
+}
+
+
+.search{
+position: relative;
+box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+  
+}
+
+.search input{
+
+ height: 60px;
+ text-indent: 25px;
+ border: 2px solid #d6d4d4;
+
+
+}
+
+body {
+  background-color: lightblue;
+}
+
+</style>
+
+    </head>
+<body>
+
+ <a href="/criminal_back">
+    <button class="btn btn-primary btn-lg">Back</button>
+  </a>
+
+    <center>
+  <div style="background-color: darkgoldenrod; height: 65px; width: 400px; align-items: center; border-radius: 10px; padding-top: 10px;">
+    <h1 style="color: black;"><b>View Criminals</b></center></h1>
+  </div>
+<br><br>
+<h3>Search By ID:</h3><br><br>
+
+<form action="/criminal_search/" method="POST">
+    {% csrf_token %} 
+<div class="container">
+
+    <div class="row height d-flex">
+
+      <div class="col-md-4">
+
+        <div class="search">
+          <i class="fa fa-search"></i>
+        
+          <input type="text" class="form-control" placeholder="Enter Criminal ID" name="search">
+        
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" style="margin-left: 450px; margin-top: -120px; height: 50px;">Search</button>
+</div>
+</form>
+  <br><br><br><br>
+
+
+
+<h3>View All Criminals: </h3>
+<br>
+<a href="/all_criminal" > <button class="btn btn-primary" style=" height: 50px;margin-left:20px ;">Show records</button> </a><br><br>
+
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-success table-striped table-hover" id="tabledata"  style="border-color:black;">
+
+
+            <tr style="text-align: center;">
+                <th>Sr. No.</th>
+                <th class="text-center">FIR ID</th>
+                <th class="text-center">Adhar No.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th class="text-center">Gender</th>
+                <th class="bg-warning">Phone</th>
+                <th class="bg-warning">Address</th>
+                <th>Claim By</th>
+                <th>Type</th>
+                <th>Action</th>
+                
+            </tr>
+            
+
+            {% for row in key %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{row.fir_id}}</td>
+                <td>{{row.fir_adhar}}</td>
+                <td>{{row.fir_fullname}}</td>
+                <td>{{row.fir_age}}</td>
+                <td>{{row.fir_gender}}</td>
+                <td>{{row.fir_phone}}</td>
+                <td>{{row.fir_address}}</td>
+                <td>{{row.fir_register_by}}</td>
+                <td>{{row.fir_type}}</td>
+               
+                
+      
+                <td style="text-align: center;">
+                    <a href="/delete/{{row.fir_id}}" class="btn btn-danger btn-sm"> Delete</a>
+                    <a href="/update/{{row.fir_id}}" class="btn btn-success btn-sm  "> Update</a>
+                    <a href="/more/{{row.fir_id}}" class="btn btn-primary btn-sm" > More</a>
+                </td>
+            </tr>
+
+            
+           
+{% endfor %}
+            
+  </table>
+  </div>
+
+
+  
+  <!-- Modal  use for hide or show see in video no 4
+  fade use for up to down model
+  in model we use header body footer then study of follwing-->
+
+
+
+
+
+
+</body>
+</html>

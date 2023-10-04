@@ -1,0 +1,633 @@
+<!-- """
+Project Name    :   Crime Investigation System
+
+Group Members   :   Nikhil Kiran Patkal
+                    Kanifnath Adinath Ghanwat
+                    Aniket Bhanudas Bhise
+
+Start Date      :   11/04/2023
+
+Complete Date   :   10/05/2023
+
+
+Project Set-up Commands:
+ A
+1)  Create environment      :   py -m venv env
+2)  Environment activate    :   env\scripts\activate
+3)  Install Djano           :   py -m pip install Django   or   pip install django
+4)  Create project          :   django-admin startproject crimeproject
+5)  Go in Project           :   cd crimeproject
+6)  Create app              :   python manage.py startapp crimeapp
+7)  Run project             :   py manage.py runserver
+8)  Make migrations         :   py manage.py makemigrations
+9)  Migrate                 :   py manage.py migrate
+10) Create admin panel      :   python manage.py createsuperuser
+
+
+Admin Credentials
+ID              :   Project@123
+Pass            :   12345
+
+""" -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8mb4">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+ 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	
+	  
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<style type="text/css"  media="screen"> 
+/* style for footer */
+.footer-basic {
+  padding:40px 0;
+  background-color:wheat;
+  color:darkblue;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:22px;
+  line-height:2.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:4;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:30px;
+  width:50px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50px;
+  border:3px solid #d90e0e;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+	
+  margin-top:70px;
+  text-align:center;
+  font-size:20px;
+  color:#0b0716;
+  margin-bottom:0;
+}
+
+/* Credit to https://epicbootstrap.com/snippets/footer-basic */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+      *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body1{
+    background: #180808;
+    font-family: sans-serif;
+}
+footer1{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: auto;
+    width: 100vw;
+
+    padding-top: 40px;
+    color: #fff;
+}
+.footer-content1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-content1 h3{
+    font-size: 2.1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+.footer-content1 p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+    color: #cacdd2;
+}
+.socials1{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+.socials1 li{
+    margin: 0 10px;
+}
+.socials1 a{
+    text-decoration: none;
+    color: #fff;
+    border: 1.1px solid white;
+    padding: 5px;
+
+    border-radius: 50%;
+
+}
+.socials1 a i{
+    font-size: 1.1rem;
+    width: 20px;
+
+
+    transition: color .4s ease;
+
+}
+.socials1 a:hover i{
+    color: aqua;
+}
+
+.footer-bottom1{
+    background: #000;
+    width: 100vw;
+    padding: 20px;
+padding-bottom: 40px;
+    text-align: center;
+}
+.footer-bottom1 p{
+float: left;
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+.footer-bottom1 p a{
+  color:#44bae8;
+  font-size: 16px;
+  text-decoration: none;
+}
+.footer-bottom1 span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
+.footer-menu1{
+  float: right;
+
+}
+.footer-menu1 ul{
+  display: flex;
+}
+.footer-menu1 ul li{
+padding-right: 10px;
+display: block;
+}
+.footer-menu1 ul li a{
+  color: #cfd2d6;
+  text-decoration: none;
+}
+.footer-menu1 ul li a:hover{
+  color: #27bcda;
+}
+
+@media (max-width:500px) {
+.footer-menu1 ul{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.sliderheight
+	{
+		height: 600px;
+	}
+
+	@media(max-width:667px)
+	{
+		.sliderheight
+		{
+			height:300px;
+		}
+	}
+	center {
+    display: block;
+    text-align: -webkit-center;
+}
+ .box-1:hover {
+  background-color: rgb(12, 152, 145);
+}
+	.box-1 {
+		max-width: 400px;
+		margin-left: 8px;
+		display: inline-block;
+		vertical-align: top;
+		border: 1px solid #efefef;
+		margin-right: 20px;
+		margin-top: 20px;
+		font-family: 'Hind', sans-serif;
+		background: #3a4e61;
+	}
+	box-img {
+		padding: 20px;
+	}
+	
+	.box-content {
+		padding: 0px 20px 20px 20px;
+	}
+	
+	navigation-links, p, .bot-margin {
+		margin-bottom: 20px;
+	}
+	p {
+		 font-weight: 100; 
+	}
+
+	div {
+    display: block;
+}
+.example_d {
+color: white !important;
+text-transform: uppercase;
+background:blue;
+padding: 7px;
+border: 3px solid #9bd2ea !important;
+border-radius: 8px;
+display: inline-block;
+transition: all 0.5s ease 0s;
+}
+.example_d:hover {
+color: #12e50b !important;
+border-radius: 35px;
+border-color: #bddb13 !important;
+transition: all 0.3s ease 0s;
+}
+
+	
+</style>
+</head>
+<body 	style="background-color:white">
+
+
+<!-- Navbar -->
+
+<div class="container-fluid bg-primary ";id="myTopnav">
+	<div class="row">
+		<div class="col-3 col-md-2 text-center">
+			{% for row in logo1 %}
+			<img src="{{row.picture}}" class="mt-3 mb-2" style="height: 80px;width: 110px;border-radius: 20px;">
+			{% endfor %}
+		</div>
+		<div class="col-9 col-md-10">
+			<nav class="navbar navbar-expand-lg navbar-light bg-warning w-auto p-4 navbar-inverse"  >
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse " id="navbarSupportedContent">
+	  				<ul class="navbar-nav mr-auto ">
+						<div class="dropdown">
+						<li class="nav-item  dropdown text-white px-4 py-2" >
+							<a class="nav-link dropdown-toggle text-white btn btn-primary example_d dropbtn" data-bs-toggle="dropdown" href="#" role="button"  aria-expanded="false">Administration
+							</a>
+							<ul class="dropdown-menu dropdown-content ">
+								<li><a class="dropdown-item text-dark" href="st_login/">Police Station Login</a></li>
+								<!-- <li><hr class="dropdown-divider"></li> -->
+								<!-- <li><a class="dropdown-item text-dark" href="officer_login/">Officer Login</a></li>
+								<li><hr class="dropdown-divider"></li> -->
+								<!-- <li><a class="dropdown-item text-dark" href="#noaction">Something else here</a></li> -->
+							</ul>
+						</li>
+					</div>
+
+						<li class="nav-item active dropdown text-white px-4 py-2" >
+							 <a class="nav-link text-white btn btn-primary example_d" data-bs-toggle="dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us
+							</a> 
+
+							<!-- <div class="" ><a class="example_d"  target="_blank" >Add Call to Action</a></div> -->
+						</li>
+
+						  <div class="dropdown">
+
+						<li class="nav-item active dropdown text-white px-4 py-2 " >
+							<a class="nav-link dropdown-toggle text-white btn btn-primary example_d dropbtn" data-bs-toggle="dropdown" role="button"  aria-expanded="false">Public Section
+							</a>
+							<ul class="dropdown-menu dropdown-content">
+								<li><a class="dropdown-item text-dark" href="online_complaint/">Online Complaint</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="feedback/">Feedback</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="public_login/">Character Certificate</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="public_alert/">Public Alerts</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="measing_people/">Missing People</a></li>
+						
+							</ul>
+						</li>
+					</div>
+
+						<!-- <li class="nav-item active dropdown text-white px-4 py-2" >
+							<a class="nav-link dropdown-toggle text-white btn btn-primary" data-bs-toggle="dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Crime Info
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item text-dark" href="#">Register FIR</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="#">View Criminals</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="#">Manage Criminals</a></li>
+							</ul>
+						</li> -->
+						<div class="dropdown">
+
+						<li class="nav-item active dropdown text-white px-4 py-2" >
+							<a class="nav-link dropdown-toggle text-white btn btn-primary example_d dropbtn" data-bs-toggle="dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Constitution
+							</a>
+							<ul class="dropdown-menu dropdown-content">
+								<li><a class="dropdown-item text-dark" href="https://www.ohchr.org/sites/default/files/UDHR/Documents/UDHR_Translations/eng.pdf">Public Rights</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="https://nios.ac.in/media/documents/SrSec338New/338_Introduction_To_Law_Eng/338_Introduction_To_Law_Eng_L12.pdf">Laws</a></li>
+								<!-- <li><hr class="dropdown-divider"></li> -->
+							
+							</ul>
+						</li>
+					</div>
+				
+				<div class="dropdown">
+						<li class="nav-item active dropdown text-white px-4 py-2" >
+							<a class="nav-link dropdown-toggle text-white btn btn-primary example_d dropbtn" data-bs-toggle="dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gallary
+							</a>
+							<ul class="dropdown-menu dropdown-content" style="text-align: center; ">
+								<li><a class="dropdown-item text-dark" href="gallary/">Ideal Personalities</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="printed_gallary/">Printed Media</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item text-dark" href="photo_gallery/">Photo Gallary</a></li>
+							</ul>
+						</li>
+					</div>
+
+					<div class="dropdown">
+							<li class="nav-item active dropdown text-white px-4 py-2 " >
+								<a class="nav-link dropdown-toggle text-white btn btn-primary example_d dropbtn" data-bs-toggle="dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More
+								</a>
+								<ul class="dropdown-menu dropdown-content">
+									<li><a class="dropdown-item text-dark" href="#">aaaa</a></li>
+									<li><hr class="dropdown-divider"></li>
+									<li><a class="dropdown-item text-dark" href="">Law</a></li>
+									<li><hr class="dropdown-divider"></li>
+									<li><a class="dropdown-item text-dark" href="#">alert</a></li>
+								</ul>
+							</li>
+						</div>
+						<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+							<i class="fa fa-bars"></i>
+						  </a>
+					</ul>
+		        </div>
+		    </nav>
+		</div>
+	</div>
+	
+</div>
+<script>
+	function myFunction() {
+	  var x = document.getElementById("myTopnav");
+	  if (x.className === "topnav") {
+		x.className += " responsive";
+	  } else {
+		x.className = "topnav";
+	  }
+	}
+	</script>
+
+
+
+<marquee scrollamount="13" style="color: red; scroll-behavior: smooth; background-color:lightblue; margin-bottom: -5px; height: 35px;"><h4><i>Welcome to Crime Investigation System...&#128522</i></h4></marquee>
+
+<!-- Slider -->
+<div class="container">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 p-0">
+				<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+					<div class="">
+					</div>
+					{% for row in slider_list %}
+					<div class="carousel-inner">
+				  		<div class="carousel-item active" data-bs-interval="1000">
+							<img src="{{row.slider_image}}" class="d-block sliderheight w-100" >
+								<div class="carousel-caption d-none d-md-block">
+					 				 <h5>{{row.slider_headerline}}</h5>
+					 			 <p>{{row.slider_details}}</p>
+								</div>
+				  		</div>
+				 			 {% endfor %}
+				 	</div>
+				</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+				 	 <span class="carousel-control-prev-icon" ></span>
+				 	 <span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+					  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				 	 <span class="visually-hidden">Next</span>
+					</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+  
+<!-- About Us -->
+{% load static %}
+
+<div class="container" style="float: left ">
+	<div row mt-5 mb-5 col-md-12>
+		<div class="col-md-6 text-center mt-5">
+			<!-- <img src="{% static 'slider_1.jpg' %}" class="w-75" style="height: 400px; margin: 20px; border-radius: 10px;"> -->
+			<!-- <iframe src="https://www.youtube.com/embed/Cm64qYau9Yo"></iframe> -->
+			<!-- <video controls height="400"width=85%>
+				<source src="{% static 'lamberginee.mp4' %}" type="video/mp4">mp4"
+				
+			</video>	 -->
+			<iframe width="600" height="315 mt-5"
+				src="https://www.youtube.com/embed/tgbNymZ7vqY">
+			</iframe>	
+			
+		</div>
+		<div class="col-md-6" style="float: right; margin-top: -350px; margin-right:-30px">
+			<h3 class="text-primary font-weight-bold text-uppercase text-center">About Us</h3>
+			<p style="text-align: justify;font-weight: 100;">National Crime Investigation Bureau is a name of Crime and Corruption killer team, operating across India with support of good officers and powerful legal team. It is an Non Government Organization (NGO) that operates independently and playing a significant role in the Services of our Country and to make our Society crime free and safe. We have take urgent step & Investigation for Crime and Corruption and playing a powerful role in Curtailing Corruption in different government departments. Now a days, our NCIB is establishing its name by making contribution in revealing out irregularities in various government departments and by making awareness among the people, about their Right. We help local, National and even International Law enforcement Officials in their constant effort to curtail the activities of Crime Syndicates, rackets, Organized gangs, smuggles and law breaking in general.</p>
+			<button class="btn btn-primary" style="align-items: center;">More</button>
+		</div>
+		<center>
+			<div class="greeting-tile mt-5">
+				<h2 class="greeting-title">Greeting Message</h2>
+				 
+		{% for row in card %}
+		<div class="box-1"style="font-family: 'Merriweather Sans', Helvetica, Arial;font-size: 14px;line-height: 23px;text-align: center;color: #fff; border-radius: 10px; margin: 10px; ">
+			<div class="box-img" style="border-radius: 5px;">
+				<img src="{{row.greeting_photo}}"style="margin: 30px;max-width: 60%;height: auto; border-radius: 10px;">
+			</div>
+			<div class="box-content">
+			<p>{{row.greeting_info}} ...</p><span><b>{{row.greeting_name}}<br>{{row.greeting_position}}</b></span>
+			</div>
+		</div>
+		{% endfor %}
+	</center>
+	</div>
+	
+</div>
+
+
+
+
+
+
+<duv class="container col-16">
+    <div class="footer-basic">
+        <footer>
+            <div class="social">
+				<a href="https://instagram.com/mr.programmer_3677?igshid=ZGUzMzM3NWJiOQ==" target="blank"><i class="icon ion-social-instagram"></i></a>
+				<a href="https://wa.link/hka58x" target="blank"><i class="icon ion-social-whatsapp"></i></a>
+				<a href="#"><i class="icon ion-social-twitter"></i></a>
+				<a href="#"><i class="icon ion-social-facebook"></i></a>
+				<a href="#"><i class="icon ion-social-chrome"></i></a>
+			</div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright" >Create By BCS Student © 2023</p>
+        </footer>
+    </div>
+</duv>
+<!-- credit to https://epicbootstrap.com/snippets/footer-basic -->
+
+
+
+
+
+
+
+
+
+</body>
+</html>

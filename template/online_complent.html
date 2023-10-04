@@ -1,0 +1,164 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+{% load static %}
+<style>
+
+.body 
+{
+ 
+  	background-image: url( "{% static 'cop.jpg' %}");
+    opacity: 0.7;
+  	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+</style>
+    </head>
+
+<body class="body">
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2 py-md-4 h-0 d-inline-block "style="background-color:grey">
+            <div class="card  text-white" style="background-color:#6b6108">
+              <div class="card-body">
+    
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <h1 style="text-align: center;color:darkorange;" ><u>Online Complaint</u></h1>
+                
+                  <form method="POST" enctype="multipart/form-data" action="/save_comp_reg/">
+                  {% csrf_token %}
+    
+                <div class="row mb-2 mt-5">
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example1">Complaint ID:</label>
+                      <input type="text" id="form6Example1" class="form-control" name="comp_id" />
+                      
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example2">Adhar No:</label>
+                      <input type="text" id="form6Example2" class="form-control" name="comp_adhar" />
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2 mt-2">
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example1">Full Name:</label>
+                      <input type="text" id="form6Example1" class="form-control" name="comp_fullname" />
+                      
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline">
+                      <label class="form-label" for="form6Example2">Age:</label>
+                      <input type="number" id="form6Example2" class="form-control" name="comp_age" />
+                      
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mb-3 ">
+                  <label for="department">Gender</label>
+                  <select  id="department" class="form-control" name="comp_gender">
+                    <option value="None">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form6Example3">Phone NO:</label>
+                  <input type="text" id="form6Example3" class="form-control" name="comp_phone"/>
+                  
+                </div>
+                
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form6Example4">Address:</label>
+                  <input type="text" id="form6Example4" class="form-control" name="comp_address" />
+                  
+                </div>
+                
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form6Example5">Register by:</label>
+                  <input type="text"  id="form6Example5" class="form-control" name="comp_register_by" />
+                  
+                </div>
+                
+                <!-- Number input -->
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form6Example5">Select Photo</label>
+                  <input type="file" id="form6Example5" class="form-control" name="comp_photo"/>
+                  
+                </div>
+                
+                
+                <div class="mb-3 ">
+                  <label for="department">Type of Crime</label>
+                  <select  id="department" class="form-control" name="comp_type">
+                    <option value="None">Select crime type</option>
+                    <option value="Murdder">Murdder</option>
+                    <option value="Kidnap">Kidnap</option>
+                    <option value="Harashment">Harashment</option>
+                    <option value="Rape">Rape</option>
+                    <option value="Political">Political</option>
+                    <option value="Robbery">Robbery</option>
+                    <option value="Motor vehicle">Motor vehicle</option>
+                    <option value="Property crimes">Property crimes</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="mb-3 ">
+                  <label ><b>Police Station: </b></label>
+                  <select  id="department" class="form-control" name="comp_station" required>
+                    <option value="None">Select Police Station</option>
+                    {% for row in station_name %}
+                    <option value="{{row.st_name}}">{{row.st_name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+    
+    
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form6Example7">Subject:</label>
+                  <textarea class="form-control" id="form6Example7" rows="4" name="comp_subject"></textarea>
+                </div>
+                
+                
+                
+                <!-- Submit button -->
+                <center><button type="submit" class="btn btn-success btn-block mb-4">Submit</button></center> 
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+
+
+</body>
+</html>
