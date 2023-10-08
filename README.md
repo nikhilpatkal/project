@@ -1,1 +1,1 @@
-# project
+# Django Crime Investigation System project
